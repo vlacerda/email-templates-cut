@@ -1,0 +1,7 @@
+<mj-section background-color="#eff2f6" padding="24px">
+  <mj-column>
+    <mj-text align="center" font-size="13px" color="#748494" line-height="20px">
+      If you did not make this request, please contact <a style="color: #748494" class="footer-link" href="mailto:support@findhotel.net">support@findhotel.net</a>
+    </mj-text>
+  </mj-column>
+</mj-section>

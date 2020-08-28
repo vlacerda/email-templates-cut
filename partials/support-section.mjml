@@ -1,0 +1,32 @@
+<mj-section>
+  <mj-column width="100%" padding="0 0 16px 0">
+    <mj-text align="center">
+      Have a question?
+    </mj-text>
+  </mj-column>
+  <mj-column>
+    <mj-text align="center">
+      {{if response.customer_support and response.customer_support.phone_number}}
+      <a href="tel:{{{response.customer_support.phone_number}}}">
+        {{response.customer_support.phone_number}}
+      </a>
+      {{end}}
+    </mj-text>
+  </mj-column>
+  <mj-column>
+    <mj-text align="center">
+      <a href="https://support.findhotel.net">
+        FAQs
+      </a>
+    </mj-text>
+  </mj-column>
+  <mj-column>
+    <mj-text align="center">
+      {{if response.customer_support and response.customer_support.email}}
+      <a href="mailto:{{{response.customer_support.email}}}">
+        Email us
+      </a>
+      {{end}}
+    </mj-text>
+  </mj-column>
+</mj-section>

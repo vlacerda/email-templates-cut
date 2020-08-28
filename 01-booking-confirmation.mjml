@@ -1,0 +1,318 @@
+<mjml>
+  <mj-include path="../partials/head.mjml" />
+  <mj-body width="620px" background-color="#ffffff">
+    <mj-wrapper padding="0 16px 90px 16px">
+      <mj-include path="../partials/header.mjml" />
+
+      <mj-section padding="24px 0 0 0">
+        <mj-column>
+          <mj-text font-weight="bold">
+            Thank you for booking with us, {{request.payment.billing.first_name}}!
+          </mj-text>
+          <mj-text padding="8px 0 0 0" mj-class="h2">
+            {{hotel_content.hotel_name}} has confirmed your stay 🎉
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 0 0 0">
+        <mj-column background-color="#f7fbff">
+          <mj-text padding="12px 12px 0 12px" align="center">Booking ID{{if #response.confirmation_numbers > 1}}s{{end}}</mj-text>
+          <mj-text mj-class="h3" padding="0 12px 12px 12px" align="center">
+            {{each response.confirmation_numbers}}
+            {{loop_var}}{{if loop_index > 0 and loop_index != #response.confirmation_numbers}}, {{end}}
+            {{end}}
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 0 32px 0">
+        <mj-column padding="0 8px 0 8px">
+          <mj-button href="{{{response.links[1].href}}}" mj-class="button--primary" width="100%" padding="8px 0 0 0">
+            Manage booking
+          </mj-button>
+        </mj-column>
+        <mj-column padding="0 8px 0 8px">
+          <mj-button href="https://www.findhotel.net/Hotel/Search?hotelId={{request.hotel_id}}&checkIn={{request.check_in.year}}-{{request.check_in.month}}-{{request.check_in.day}}&checkOut={{request.check_out.year}}-{{request.check_out.month}}-{{request.check_out.day}}" mj-class="button--secondary" width="100%" padding="8px 0 0 0">
+            Book again
+          </mj-button>
+        </mj-column>
+      </mj-section>
+
+      <mj-section>
+        <mj-column>
+          <mj-text mj-class="h2">
+            <a href="https://www.findhotel.net/Hotel/Search?hotelId={{request.hotel_id}}&checkIn={{request.check_in.year}}-{{request.check_in.month}}-{{request.check_in.day}}&checkOut={{request.check_out.year}}-{{request.check_out.month}}-{{request.check_out.day}}">
+              {{hotel_content.hotel_name}}
+            </a>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-include path="../partials/hotel-details-section.mjml" />
+
+      <mj-section padding="16px 0 0 0">
+        <mj-column>
+          <mj-divider mj-class="divider" />
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 0 0 0">
+        <mj-column>
+          <mj-text mj-class="h2">
+            Booking overview
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 0 0 0">
+        <mj-column>
+          <mj-text color="#748494">
+            Status
+          </mj-text>
+          <mj-text color="#1fbf27">
+            Confirmed
+          </mj-text>3
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 0 0 0">
+        <mj-column width="100%">
+          <mj-text>
+            {{each request.rooms}}
+            Reserved for {{loop_var.first_name}} {{loop_var.last_name}}
+            <br />
+            {{if request.room_name}}
+            {{request.room_name}}
+            {{else}}
+            Room {{loop_index}}
+            {{end}}
+            <br />
+            {{request.number_of_nights}} night{{if request.number_of_nights > 1}}s{{end}}{{if loop_var.guests}}, {{loop_var.guests.adults}} adult{{if loop_var.guests.adults > 1}}s{{end}}
+            {{if loop_var.guests.children}}
+            {{loop_var.guests.children}} {{if loop_var.guests.children == 1}}child
+            {{else}}children{{end}}
+              {{end}}
+              {{end}}
+              {{if loop_index != #request.rooms}}
+              <br />
+              <br />
+              {{end}}
+              {{end}}
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 0 0 0">
+        <mj-column>
+          <mj-divider mj-class="divider" />
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="0 0 32px 0">
+        <mj-column>
+          <mj-text font-weight="bold" padding="16px 0 0 0">
+            Check-in
+          </mj-text>
+          <mj-include path="../partials/check-in-date.mjml" />
+        </mj-column>
+        <mj-column>
+          <mj-text font-weight="bold" padding="16px 0 0 0">
+            Check-out
+          </mj-text>
+          <mj-include path="../partials/check-out-date.mjml" />
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 16px 8px 16px" background-color="#f7fbff" border-radius="4px">
+        <mj-column>
+          <mj-text mj-class="h2">
+            Price breakdown
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="0 16px 0 16px" background-color="#f7fbff">
+        <mj-column>
+          <mj-text padding="8px 0 0 0">
+            {{#request.rooms}} room{{if #request.rooms > 1}}s{{end}}, {{request.number_of_nights}} night{{if request.number_of_nights > 1}}s{{end}}
+          </mj-text>
+        </mj-column>
+        <mj-column>
+          <mj-text padding="8px 0 0 0" align="right">
+            {{each response.prices}}
+            {{if loop_var.type == 'chargeable_currency'}}
+            {{loop_var.currency_code}} {{loop_var.chargeable.base}}
+            {{end}}
+            {{end}}
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="0 16px 0 16px" background-color="#f7fbff">
+        <mj-column>
+          <mj-text padding="8px 0 0 0">
+            Taxes and fees
+          </mj-text>
+        </mj-column>
+        <mj-column>
+          <mj-text padding="8px 0 0 0" align="right">
+            {{each response.prices}}
+            {{if loop_var.type == 'chargeable_currency'}}
+            {{loop_var.currency_code}} {{loop_var.chargeable.taxes}}
+            {{end}}
+            {{end}}
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 16px 0 16px" background-color="#f7fbff">
+        <mj-column>
+          <mj-divider mj-class="divider" />
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 16px 8px 16px" background-color="#f7fbff">
+        <mj-column>
+          <mj-text mj-class="h2">
+            Payment
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="0 16px 0 16px" background-color="#f7fbff">
+        <mj-column>
+          <mj-text padding="8px 0 0 0">
+            Already paid
+          </mj-text>
+        </mj-column>
+        <mj-column>
+          <mj-text padding="8px 0 0 0" align="right">
+            {{each response.prices}}
+            {{if loop_var.type == 'chargeable_currency'}}
+            {{loop_var.currency_code}} {{loop_var.chargeable.total}}
+            {{end}}
+            {{end}}
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 16px 0 16px" background-color="#f7fbff">
+        <mj-column>
+          <mj-text font-weight="bold" padding="8px 0 0 0">
+            Due at property
+          </mj-text>
+        </mj-column>
+        <mj-column>
+          <mj-text font-weight="bold" padding="8px 0 0 0" align="right">
+            {{each response.prices}}
+            {{if loop_var.type == 'chargeable_currency'}}
+            {{loop_var.currency_code}} {{loop_var.hotel_fees.total}}
+            {{end}}
+            {{end}}
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 16px 0 16px" background-color="#f7fbff">
+        <mj-column>
+          <mj-divider mj-class="divider" />
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="0 16px 16px 16px" background-color="#f7fbff">
+        <mj-column>
+          <mj-text padding="16px 0 0 0">
+            Total price (with taxes & fees)
+          </mj-text>
+        </mj-column>
+        <mj-column>
+          <mj-text padding="16px 0 0 0" align="right">
+            {{each response.prices}}
+            {{if loop_var.type == 'chargeable_currency'}}
+            {{loop_var.currency_code}} {{loop_var.chargeable.total + loop_var.hotel_fees.total}}
+            {{end}}
+            {{end}}
+          </mj-text>
+
+          <mj-text padding="8px 0 0 0" align="right">
+            {{each response.prices}}
+            {{if loop_var.type == 'user_currency'}}
+            ({{loop_var.currency_code}} {{loop_var.chargeable.total + loop_var.hotel_fees.total}})
+            {{end}}
+            {{end}}
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="0 16px 16px 16px" background-color="#f7fbff">
+        <mj-column>
+          <mj-text align="right" color="#748494" font-size="12px">
+            {{if #response.prices == 2 and response.prices[1].currency_code != response.prices[2].currency_code}}
+            The price was converted to show you the approximate cost in {{each response.prices}} {{if loop_var.type == 'user_currency'}}{{loop_var.currency_code}}{{end}}{{end}}.
+            You'll pay in {{each response.prices}} {{if loop_var.type == 'chargeable_currency'}}{{loop_var.currency_code}}{{end}}{{end}}
+            {{end}}
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="32px 0 0 0">
+        <mj-column>
+          <mj-text mj-class="h2">
+            Check-in instructions
+          </mj-text>
+          <mj-text padding="8px 0 0 0">
+            {{{response.instructions.details}}}
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 0 0 0">
+        <mj-column>
+          <mj-divider mj-class="divider" />
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 0 0 0">
+        <mj-column>
+          <mj-text mj-class="h2">
+            Cancellation Policy
+          </mj-text>
+
+          <mj-text padding="16px 0 0 0" font-size="12px" color="#748494">
+            Dates and times in the policy refer to the property's local time.
+          </mj-text>
+          <mj-text padding="8px 0 0 0">
+            {{response.cancellation_policy.description}}
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 0">
+        <mj-column>
+          <mj-divider mj-class="divider" />
+        </mj-column>
+      </mj-section>
+
+      <mj-include path="../partials/manage-booking-section.mjml" />
+
+      <mj-section>
+        <mj-column>
+          <mj-spacer height="16px" />
+        </mj-column>
+      </mj-section>
+
+      <mj-include path="../partials/support-section.mjml" />
+
+      <mj-section padding="16px 0 0 0">
+        <mj-column padding="16px" background-color="#f7fbff">
+          <mj-text font-size="13px" align="center" color="#748494">
+            You have received this email based on a recent booking on <a href="https://www.findhotel.net">FindHotel</a>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-include path="../partials/footer.mjml" />
+    </mj-wrapper>
+  </mj-body>
+</mjml>

@@ -1,0 +1,13 @@
+<mj-head>
+  <mj-attributes>
+    <mj-all font-family="Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif" color="#2a333d" font-size="15px" font-weight="400" line-height="20px" padding="0" />
+
+    <mj-class name="h1" font-size="26px" font-weight="bold" line-height="36px" />
+    <mj-class name="h2" font-size="21px" font-weight="bold" line-height="28px" />
+    <mj-class name="h3" font-size="18px" font-weight="bold" line-height="24px" />
+
+    <mj-class name="button--primary" background-color="#0077ff" color="white" font-weight="bold" inner-padding="14px 32px" border-radius="6px" />
+    <mj-class name="button--secondary" background-color="#f7fbff" color="#0077ff" font-weight="bold" border="1px solid #bfdaf9" inner-padding="14px 32px" border-radius="6px" />
+    <mj-class name="divider" border-width="1px" border-style="solid" border-color="#eff2f6" />
+  </mj-attributes>
+</mj-head>

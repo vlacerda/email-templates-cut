@@ -1,0 +1,134 @@
+<mjml>
+  <mj-include path="../partials/head.mjml" />
+  <mj-body width="620px" background-color="#ffffff">
+    <mj-wrapper padding="0 16px 90px 16px">
+      <mj-include path="../partials/header.mjml" />
+
+      <mj-section padding="24px 0 0 0">
+        <mj-column>
+          <mj-text font-weight="bold">
+            Hi, {{booking.billing.first_name}}!
+          </mj-text>
+          <mj-text padding="8px 0 0 0" mj-class="h2">
+            Your reservation at {{hotel_content.hotel_name}} was cancelled
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 0 0 0">
+        <mj-column background-color="#f7fbff">
+          <mj-text padding="12px 12px 0 12px" align="center">Booking ID{{if #booking.rooms > 1}}s{{end}}</mj-text>
+          <mj-text mj-class="h3" padding="0 12px 12px 12px" align="center">
+            {{each booking.rooms}}
+            {{loop_var.confirmation_id}}{{if loop_index > 0 and loop_index != #booking.rooms}}, {{end}}
+            {{end}}
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 0 32px 0">
+        <mj-column width="50%">
+          <mj-button href="https://www.findhotel.net/Hotel/Search?hotelId={{booking.hotel_id}}&checkIn={{booking.check_in.year}}-{{booking.check_in.month}}-{{booking.check_in.day}}&checkOut={{booking.check_out.year}}-{{booking.check_out.month}}-{{booking.check_out.day}}" mj-class="button--primary" width="100%" padding="8px 0 0 0">
+            Book again
+          </mj-button>
+        </mj-column>
+      </mj-section>
+
+      <mj-section>
+        <mj-column>
+          <mj-text mj-class="h2">
+            <a href="https://www.findhotel.net/Hotel/Search?hotelId={{booking.hotel_id}}&checkIn={{booking.check_in.year}}-{{booking.check_in.month}}-{{booking.check_in.day}}&checkOut={{booking.check_out.year}}-{{booking.check_out.month}}-{{booking.check_out.day}}">
+              {{hotel_content.hotel_name}}
+            </a>
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-include path="../partials/hotel-details-section.mjml" />
+
+      <mj-section padding="16px 0 0 0">
+        <mj-column>
+          <mj-divider mj-class="divider" />
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 0 0 0">
+        <mj-column>
+          <mj-text mj-class="h2">
+            Booking overview
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 0 0 0">
+        <mj-column>
+          <mj-text color="#748494">
+            Status
+          </mj-text>
+          <mj-text color="#2a333d">
+            Cancelled
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 0 0 0">
+        <mj-column>
+          <mj-text>
+            {{each booking.rooms}}
+            Reserved for {{loop_var.first_name}} {{loop_var.last_name}}
+            <br />
+            {{if loop_var.name}}
+            {{loop_var.name}}
+            {{else}}
+            Room {{loop_index}}
+            <br />
+            {{end}}
+            {{if loop_var.guests}}
+            {{loop_var.guests.adults}} adult{{if loop_var.guests.adults > 1}}s{{end}}
+            {{if loop_var.guests.children}}
+            {{loop_var.guests.children}} {{if loop_var.guests.children == 1}}child
+            {{else}}children{{end}}
+              {{end}}
+              {{end}}
+              {{if loop_index != #booking.rooms}}
+              <br />
+              <br />
+              {{end}}
+              {{end}}
+          </mj-text>
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 0 0 0">
+        <mj-column>
+          <mj-divider mj-class="divider" />
+        </mj-column>
+      </mj-section>
+
+      <mj-section>
+        <mj-column>
+          <mj-text font-weight="bold" padding="16px 0 0 0">
+            Check-in
+          </mj-text>
+          <mj-include path="../partials/check-in-date-cancellation.mjml" />
+        </mj-column>
+        <mj-column>
+          <mj-text font-weight="bold" padding="16px 0 0 0">
+            Check-out
+          </mj-text>
+          <mj-include path="../partials/check-out-date-cancellation.mjml" />
+        </mj-column>
+      </mj-section>
+
+      <mj-section padding="16px 0">
+        <mj-column>
+          <mj-divider mj-class="divider" />
+        </mj-column>
+      </mj-section>
+
+      <mj-include path="../partials/support-section-cancellation.mjml" />
+
+      <mj-include path="../partials/footer.mjml" />
+
+  </mj-body>
+</mjml>

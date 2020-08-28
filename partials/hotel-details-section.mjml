@@ -1,0 +1,44 @@
+<mj-section padding="8px 0 0 0">
+  <mj-column>
+    <mj-text>
+      📍
+      <a href="https://www.google.com/maps/search/?api=1&query={{hotel_content.hotel_name}} {{hotel_content.address}}">
+        {{hotel_content.address}}
+      </a>
+    </mj-text>
+  </mj-column>
+</mj-section>
+
+<mj-section padding="16px 0 0 0">
+  <mj-column>
+    <mj-text color="#748494">
+      {{if hotel_content.phone_number or hotel_content.email}}
+      Contact details
+      {{end}}
+    </mj-text>
+  </mj-column>
+</mj-section>
+
+<mj-section padding="4px 0 0 0">
+  <mj-column>
+    <mj-text>
+      {{if hotel_content.phone_number}}
+      <a href="tel:{{hotel_content.phone_number}}">
+        {{hotel_content.phone_number}}
+      </a>
+      {{end}}
+    </mj-text>
+  </mj-column>
+</mj-section>
+
+<mj-section padding="4px 0 0 0">
+  <mj-column>
+    <mj-text>
+      {{if hotel_content.email}}
+      <a href="mailto:{{hotel_content.email}}">
+        {{hotel_content.email}}
+      </a>
+      {{end}}
+    </mj-text>
+  </mj-column>
+</mj-section>

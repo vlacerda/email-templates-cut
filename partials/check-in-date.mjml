@@ -1,0 +1,15 @@
+<mj-text>
+  {{if request.check_in.month == 1}}Jan {{end}}
+  {{if request.check_in.month == 2}}Feb {{end}}
+  {{if request.check_in.month == 3}}Mar {{end}}
+  {{if request.check_in.month == 4}}Apr {{end}}
+  {{if request.check_in.month == 5}}May {{end}}
+  {{if request.check_in.month == 6}}Jun {{end}}
+  {{if request.check_in.month == 7}}Jul {{end}}
+  {{if request.check_in.month == 8}}Aug {{end}}
+  {{if request.check_in.month == 9}}Sept {{end}}
+  {{if request.check_in.month == 10}}Oct {{end}}
+  {{if request.check_in.month == 11}}Nov {{end}}
+  {{if request.check_in.month == 12}}Dec {{end}}
+  {{request.check_in.day}}, {{request.check_in.year}} from {{hotel_content.check_in_time}}
+</mj-text>

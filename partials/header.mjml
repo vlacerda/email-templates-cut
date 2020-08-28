@@ -1,0 +1,11 @@
+<mj-section padding="24px">
+  <mj-column width="120px">
+    <mj-image width="120px" src="https://static.prd.eu.daedalus.fih.io/shared/images/email-templates/logo.png" />
+  </mj-column>
+</mj-section>
+
+<mj-section>
+  <mj-column>
+    <mj-divider mj-class="divider" />
+  </mj-column>
+</mj-section>

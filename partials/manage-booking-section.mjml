@@ -1,0 +1,15 @@
+<mj-section>
+  <mj-column>
+    <mj-text align="center">
+      You can always manage your booking online.
+    </mj-text>
+  </mj-column>
+</mj-section>
+
+<mj-section>
+  <mj-column width="50%">
+    <mj-button href="{{{response.links[1].href}}}" mj-class="button--primary" width="100%" padding="16px 0 0 0">
+      Manage booking
+    </mj-button>
+  </mj-column>
+</mj-section>
